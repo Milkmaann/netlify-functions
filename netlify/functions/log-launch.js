@@ -16,7 +16,7 @@ exports.handler = async (event) => {
   const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
 
   const spreadsheetId = 'TAD_VLOŽ_ID_TVÉ_TABULKY'; // z URL Google Sheets
-  const range = 'A:D'; // kam se budou data zapisovat
+  const range = 'List1!A:D'; // kam se budou data zapisovat
 
   // Připrav data k zápisu
   const values = [
@@ -37,6 +37,7 @@ exports.handler = async (event) => {
       spreadsheetId,
       range,
       valueInputOption: 'USER_ENTERED',
+      insertDataOption: 'INSERT_ROWS'
       resource,
     });
 
