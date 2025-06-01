@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "zinc-transit-461610-n3",
+  "private_key_id": "93822ca2af8f680437d6787dc525637e6236174b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDcBSTjPyZhDQAF\nmiyxzURMYjZTsJuy0uBkVCxB6IYJSN5j+yywUG+4A+i5EaEOaXa5GmZupbmPkIYi\nty6oO6JemvxcIRm4STmJz+JaWaw0Svjsui4Xt7BMIHU+6/xLV2b6ZLG2t/GMATP0\n4JTf9Sy3cavlH2a1LcYlfu5ko7E0QAmeBqmXgbG1b15TOYP4nD5cwUMWslcgsMMm\nLEvebDy3cYEqjn9fkH93M6DrHF2rApgPeO2T/yXQlNT+WzRBhrRo70TGOmPvYRHf\nblerkSYdwmexer4AyJVVfkzXp5Edn/I0ZfofjuqlRSeSZU2e2RRHZyQ6EKg/YYfi\nWpD1xEg5AgMBAAECggEAMuCapNT1yEP0EReThcMIa9xbITOp8Wpbmr+vI0eEdTGt\nQXPz48qZ5vS6dE9MDbPcERY2gRggBn9+URlId/0gQR24RQqfcrK2FDTm7Asn68i5\ncq5j2bavlQ79ZcE2rGpn5Pdzc+Ppvn0JuXLUYkyE3F+0Bu3ht3xAAWwubsW+hKzr\nZmnuqVVI1b6Nup1+Ukb6A7amPTGj+VDCf+f3D3vlvTqxTSeN1d0XucskaoeUZvaj\nuUcO/8jU1USFNJ0zZUGugU6SuAJVSIL2BcDJHFMQ7PVdM60l7SulhMvvnIDGc4us\nB1fofGaUYwGk8Mw8XexfyGzLUB51a8mf2ajMUhrfXQKBgQD2Oyk6VtOIjVEoQVvT\nLFqvuAuebHx/X6fSgPwIH5HzAwdubWR9yu1+M+IaXuWuHvBpIhKuiw+sL6wdlAdt\nYpa4ev3qimcxakN+Et+bgMv4l6GtFl5or+IYolhaoRB3icOd6TYS/UJn2pU/UPAT\nI+qjO9BD/3U5trq6TdKc+YDenQKBgQDkv8WRjn78ZUZLB8gclWsYSsWMV60Wa90e\nu72PxlqG51vWLIAEqAsH7/gqXgNTV/C93R1VgA4WHAxy1HfMuYt5Yp8XHmsuhORN\nmEmLzE4S43DVjHAdE2tTYLORveeJvNbrEQYBESkR7ZCv0KFyGqqBXeEdK3IkUS9E\nE1b6ZuSvTQKBgH0hmZUNNNjLQDgd5uVNQBTWigkLhsVQPkAKzonuSURfALLMouoO\na1zcTwYpvb0b+f7jkuzivKc7XtN1O8UJ+iBsWIeNqF2DbCMwwjQLYxzFKiOFH5tB\n7ruoHRCJk428FA42ywUhcVLH0Vro7eg8M2ya4/76Xn9i7kfpbqPZY/U9AoGAbt1v\nELvCWetvpR+xYgEc9ZoPopQ/xHUkpyeQmSUmbOmmvee1aAxVxFQOr+H+tJ8Tg8Gt\n3OmCaj7P3buSEHwA2CTvPBI3GkW4LM9ZHdM4J7lpz2YQVFc8Fh3xCfrDRCNs+mK2\nyT+a6yB7lmqERLwd1TM9zphm6qkaQmEpL5U80qUCgYEAtr/EUarO/MtNKHieO3iR\nl5fLO9jYl6I01mBKGXu8YP9bTKKnURZzojn9ICrtcXtSux9EKcMKuMs964yIltBT\n5NaTbKUarbfINo4pZRIYbuhOhs/m/QsvH9uHONlslX8IufeN9DP5yxwFiFJyClQc\nOVmWOC28uqscxZOk5tpq9Y0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "netlify-access-633@zinc-transit-461610-n3.iam.gserviceaccount.com",
+  "client_id": "115024238543090637386",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/netlify-access-633%40zinc-transit-461610-n3.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
