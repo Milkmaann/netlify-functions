@@ -12,8 +12,6 @@ exports.handler = async (event) => {
     timestamp: data.timestamp
   });
 
-  // Tady můžeš přidat uložení do DB, email, atd.
-
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Data přijata" }),
