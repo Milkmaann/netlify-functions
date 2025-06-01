@@ -5,15 +5,17 @@ exports.handler = async (event) => {
 
   const data = JSON.parse(event.body);
 
-  console.log("Data z apky:", {
-    ip: event.headers["x-forwarded-for"] || "unknown",
-    computerName: data.computerName,
-    macAddress: data.macAddress,
-    timestamp: data.timestamp
-  });
-
+  // Vracíme přesně ta data, která přišla
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: "Data přijata" }),
+    body: JSON.stringify({
+      message: "Data přijata",
+      receivedData: {
+        ip: event.headers["x-forwarded-for"] || "unknown",
+        computerName: data.computerName,
+        macAddress: data.macAddress,
+        timestamp: data.timestamp
+      }
+    }),
   };
 };
