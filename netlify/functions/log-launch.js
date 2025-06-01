@@ -15,7 +15,7 @@ exports.handler = async (event) => {
 
   const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
 
-  const spreadsheetId = 'https://docs.google.com/spreadsheets/d/1s4Dw0ifvSC7INeJcMAma1UaTjHTaniX0Cf61r7s6APY/edit?usp=sharing'; // z URL Google Sheets
+  const spreadsheetId = '1s4Dw0ifvSC7INeJcMAma1UaTjHTaniX0Cf61r7s6APY'; // z URL Google Sheets
   const range = 'List1!A:D'; // kam se budou data zapisovat
 
   // Připrav data k zápisu
