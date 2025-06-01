@@ -1,21 +1,53 @@
+const { google } = require('googleapis');
+
 exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Použij POST" };
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Použij POST' };
   }
 
   const data = JSON.parse(event.body);
 
-  // Vracíme přesně ta data, která přišla
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: "Data přijata",
-      receivedData: {
-        ip: event.headers["x-forwarded-for"] || "unknown",
-        computerName: data.computerName,
-        macAddress: data.macAddress,
-        timestamp: data.timestamp
-      }
-    }),
+  // Nastavení OAuth2 klienta (tady použijeme službu s klíčem)
+  const auth = new google.auth.GoogleAuth({
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    keyFile: './credentials.json'  // sem dáš stažený JSON s přístupem (viz níže)
+  });
+
+  const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
+
+  const spreadsheetId = 'TAD_VLOŽ_ID_TVÉ_TABULKY'; // z URL Google Sheets
+  const range = 'A:D'; // kam se budou data zapisovat
+
+  // Připrav data k zápisu
+  const values = [
+    [
+      event.headers['x-forwarded-for'] || 'unknown',
+      data.computerName,
+      data.macAddress,
+      data.timestamp
+    ],
+  ];
+
+  const resource = {
+    values,
   };
+
+  try {
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range,
+      valueInputOption: 'USER_ENTERED',
+      resource,
+    });
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Data uložena do Google Sheets' }),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'Chyba při ukládání', error: error.message }),
+    };
+  }
 };
