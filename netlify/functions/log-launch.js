@@ -10,7 +10,7 @@ exports.handler = async (event) => {
   // Nastavení OAuth2 klienta (tady použijeme službu s klíčem)
   const auth = new google.auth.GoogleAuth({
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    keyFile: 'netlify-functions/netlify/functions/zinc-transit-461610-n3-93822ca2af8f.json'  // sem dáš stažený JSON s přístupem (viz níže)
+    keyFile: 'zinc-transit-461610-n3-93822ca2af8f.json'  // sem dáš stažený JSON s přístupem (viz níže)
   });
 
   const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
