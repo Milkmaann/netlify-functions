@@ -1,11 +1,13 @@
 const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 const { GoogleAuth } = require('google-auth-library');
+const path = require('path');
 
 const auth = new GoogleAuth({
-  keyFile: './zinc-transit-461610-n3-93822ca2af8f.json',
+  keyFile: path.join(__dirname, 'zinc-transit-461610-n3-93822ca2af8f.json'),
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
+
 
 const spreadsheetId = '1s4Dw0ifvSC7INeJcMAma1UaTjHTaniX0Cf61r7s6APY'; // ID tvého sešitu
 
@@ -40,11 +42,11 @@ exports.handler = async (event) => {
       body: JSON.stringify({ message: 'Data úspěšně zapsána do Google Sheets' }),
     };
 
-  } catch (error) {
-    console.error('Chyba zápisu do tabulky:', error);
-    return {
-      statusCode: 500,
-      body: 'Chyba při zápisu do tabulky',
-    };
-  }
+ } catch (error) {
+  console.error('Chyba při zápisu do tabulky:', error.response ? error.response.data : error.message);
+  return {
+    statusCode: 500,
+    body: 'Chyba při zápisu do tabulky',
+  };
+}
 };
