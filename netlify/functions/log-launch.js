@@ -1,54 +1,50 @@
 const { google } = require('googleapis');
+const sheets = google.sheets('v4');
+const { GoogleAuth } = require('google-auth-library');
+
+const auth = new GoogleAuth({
+  keyFile: './zinc-transit-461610-n3-93822ca2af8f.json', // cesta ke staženému JSON
+  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+});
+
+const spreadsheetId = '1s4Dw0ifvSC7INeJcMAma1UaTjHTaniX0Cf61r7s6APY'; // tvoje ID
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Použij POST' };
+    return {
+      statusCode: 405,
+      body: 'Použij POST',
+    };
   }
 
   const data = JSON.parse(event.body);
-
-  // Nastavení OAuth2 klienta (tady použijeme službu s klíčem)
-  const auth = new google.auth.GoogleAuth({
-    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    keyFile: 'zinc-transit-461610-n3-93822ca2af8f.json'  // sem dáš stažený JSON s přístupem (viz níže)
-  });
-
-  const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
-
-  const spreadsheetId = '1s4Dw0ifvSC7INeJcMAma1UaTjHTaniX0Cf61r7s6APY'; // z URL Google Sheets
-  const range = 'List1!A:D'; // kam se budou data zapisovat
-
-  // Připrav data k zápisu
-  const values = [
-    [
-      event.headers['x-forwarded-for'] || 'unknown',
-      data.computerName,
-      data.macAddress,
-      data.timestamp
-    ],
-  ];
-
-  const resource = {
-    values,
-  };
+  const client = await auth.getClient();
 
   try {
-    await sheets.spreadsheets.values.append({
+    const response = await sheets.spreadsheets.values.append({
+      auth: client,
       spreadsheetId,
-      range,
-      valueInputOption: 'USER_ENTERED',
-      insertDataOption: 'INSERT_ROWS'
-      resource,
+      range: 'A1',
+      valueInputOption: 'RAW',
+      requestBody: {
+        values: [[
+          new Date().toISOString(),
+          data.computerName || 'unknown',
+          data.macAddress || 'unknown'
+        ]]
+      },
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Data uložena do Google Sheets' }),
+      body: JSON.stringify({ message: 'Zapsáno do Google Sheets', result: response.data }),
     };
+
   } catch (error) {
+    console.error('Chyba zápisu do tabulky:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Chyba při ukládání', error: error.message }),
+      body: 'Chyba při zápisu do tabulky',
     };
   }
 };
